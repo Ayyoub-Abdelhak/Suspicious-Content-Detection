@@ -64,10 +64,10 @@ public class Database {
     QueryResult getTweets() throws TwitterException {
         ConfigurationBuilder cb = new ConfigurationBuilder();
         cb.setDebugEnabled(true)
-                .setOAuthConsumerKey("cwUFEut5HGttwhxo3pAuPsFv7")
-                .setOAuthConsumerSecret("Dl9pjk4HkFpAEqtDggt7jWQCIzGU32o4CAOp2shUlKtz0Yfpmw")
-                .setOAuthAccessToken("3013580153-6rQRnCSleZ7QbEdxsSWSfVmi7esHP0VZpk1h3vl")
-                .setOAuthAccessTokenSecret("II8oBDejHPPO0oYtvp1G0FWS6F9NqLreJbatOZ8kboMTK");
+                .setOAuthConsumerKey("***")
+                .setOAuthConsumerSecret("***")
+                .setOAuthAccessToken("***")
+                .setOAuthAccessTokenSecret("***");
         TwitterFactory tf = new TwitterFactory(cb.build());
         Twitter twitter = tf.getInstance();
         Query q = new Query("attack");

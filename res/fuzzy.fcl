@@ -1,0 +1,44 @@
+FUNCTION_BLOCK tipper
+
+VAR_INPUT				// Define input variables
+	normal_prob : REAL;
+	suspicious_prob : REAL;
+END_VAR
+
+VAR_OUTPUT				// Define output variable
+	decision : REAL;
+END_VAR
+
+FUZZIFY normal_prob
+	TERM Low := trape 0 0 0.25 0.35; 
+	TERM Medium := trape 0.25 0.35 0.6 0.7;
+	TERM Strong := trape 0.6 0.7 1 1;
+END_FUZZIFY
+
+FUZZIFY suspicious_prob
+	TERM Low := trape 0 0 0.25 0.35; 
+	TERM Medium := trape 0.25 0.35 0.6 0.7;
+	TERM Strong := trape 0.6 0.7 1 1;
+END_FUZZIFY
+
+DEFUZZIFY decision
+	TERM normal := trape 0 0 10 20;
+	TERM degree1 := trape 10 20 40 50;
+	TERM degree2 := trape 40 50 70 80;
+	TERM degree3 := trape 70 80 100 100;
+	METHOD : COG;
+	DEFAULT := 0;
+END_DEFUZZIFY
+
+RULEBLOCK No1
+	AND : MIN;
+	ACT : MIN;
+	ACCU : MAX;
+	
+	RULE 1 : IF suspicious_prob IS Low THEN decision IS normal;
+	RULE 2 : IF suspicious_prob IS Medium AND normal_prob is Medium THEN decision IS degree1;
+	RULE 3 : IF suspicious_prob IS Medium AND normal_prob is Low THEN decision IS degree2;
+	RULE 4 : IF suspicious_prob IS Strong THEN decision IS degree3;
+END_RULEBLOCK
+
+END_FUNCTION_BLOCK

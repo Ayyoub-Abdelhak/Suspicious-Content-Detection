@@ -7,5 +7,3 @@ This project contains a java implementation of a hybrid approach, which consists
 - **mapping.txt** the learning databases were in english so I added this mapping file so the system can learn from non english words. Each column in the file represent a language.
 - **normal.txt** and **suspicious.txt** are the learning databases.
 - **testNormal.txt** and **testSuspicious** contains tweets I classified myself to validate the model.
-### Author
-If you need more information or you had problems modifying this project to your needs feel free to contact me here abdelhak.ayyoub@gmail.com 
